@@ -14,7 +14,7 @@ The page reads as the bakery's own painted signage, seen on a phone.
 | `--teal` | #1F5E5B | Hours board |
 | `--ink` | #1E1813 | Text, top bar, menu board, call dock |
 | `--cream` | #FFF4E2 | Text on red/teal/ink (4.8:1 on red) |
-| `--ph-*` | pink #D6157A family | Placeholders only, deliberately off-palette |
+| `--ph-*` | ink-soft text, marigold underline, #855A00 label | Placeholders (cream/sign-yellow on the teal board) |
 
 ## Type
 - Display: **Anybody** (variable, wdth 50–150, wght 100–900). The name uses wdth 64 / 850 with an ink outline and a 6-step drop shade; section titles use wdth 50–70 / 900, uppercase; small labels use wide widths (120–150%) with letter-spacing.
@@ -26,7 +26,7 @@ The page reads as the bakery's own painted signage, seen on a phone.
 - **Slip:** paper card with a dashed top edge (torn from the pad) and a soft shadow.
 - **Pad:** numbered order checklist; ruled lines follow the items.
 - **Buttons:** 56px tall, 3px ink border, marigold fill (call) or cream outline on red.
-- **Placeholder** `.ph`: pink dashed pill with a TBD / Pendiente tag.
+- **Placeholder** `.ph`: dark brown bold text, 2px dotted mustard underline, small-caps mustard "TBD" / "Pendiente" label.
 - **Photo slot** `.photo`: aspect-ratio frame with corner crop marks.
 - **Dock:** fixed call bar on phones. It is hidden while the hero buttons are visible, and hidden entirely on desktop, where the phone number sits in the top bar.
 

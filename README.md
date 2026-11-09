@@ -22,7 +22,7 @@ Then open `http://localhost:8000/`. Useful links:
 
 ## Placeholders to fill (owner to confirm)
 
-Every unconfirmed item has a pink dashed tag on the page (TBD / Pendiente). To find them in the code, search `class="ph"`.
+Every unconfirmed item is marked on the page with a small mustard "TBD" (Spanish: "Pendiente") label and a dotted mustard underline. To find them in the code, search `class="ph"`.
 
 1. Holiday hours (Hours board). Also, the "Open now" pill does not know about holidays yet.
 2. The whole Big orders opening line: "Call ahead for whole cakes, whole flan, and tamales by the dozen" (placeholder wording)

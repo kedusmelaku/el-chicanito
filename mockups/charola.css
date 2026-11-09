@@ -22,6 +22,9 @@
 }
 
 body { background: var(--board); color: var(--chalk); }
+/* placeholders on the dark board use chalk text and concha yellow; on paper slips they go dark again */
+.ph { --ph-ink: var(--chalk); --ph-line: var(--concha-yellow); --ph-tag: var(--concha-yellow); }
+.slip .ph { --ph-ink: var(--board); --ph-line: var(--cocoa); --ph-tag: var(--cocoa); }
 ::selection { background: var(--concha-yellow); color: var(--board); }
 .link { color: var(--concha-pink); }
 :focus-visible { outline-color: var(--concha-yellow); }

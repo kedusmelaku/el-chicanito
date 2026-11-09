@@ -33,11 +33,10 @@
   --shadow: rgb(70 40 0 / .35);
   --cream-wash: rgb(255 244 226 / .14);
 
-  /* placeholders: deliberately off-palette so they are easy to find */
-  --ph-bg: #FFE1F0;
-  --ph-line: #D6157A;
-  --ph-ink: #5C0A35;
-  --ph-tag-ink: #FFFFFF;
+  /* placeholders: palette colors, marked by a mustard dotted underline and a TBD label */
+  --ph-ink: var(--ink-soft);   /* dark brown text */
+  --ph-line: var(--marigold);  /* mustard dotted underline */
+  --ph-tag: #855A00;           /* mustard label, deepened to stay readable on light grounds (5:1) */
 
   --display: "Anybody", "Arial Narrow", sans-serif;
   --body: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, sans-serif;
@@ -465,29 +464,27 @@ address { font-style: normal; }
 
 /* ---------- Placeholders: easy to spot, easy to grep (class="ph") ---------- */
 .ph {
-  background: var(--ph-bg);
   color: var(--ph-ink);
-  border: 2px dashed var(--ph-line);
-  border-radius: 4px;
-  padding: .15em .4em;
-  line-height: 1.75;
   font-weight: 700;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ph-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .25em;
+  text-decoration-skip-ink: none;
 }
 .ph::before {
   content: "TBD";
-  display: inline-block;
+  display: inline-block;   /* keeps the underline off the label */
   margin-right: .4em;
-  padding: .05em .35em;
-  border-radius: 3px;
-  background: var(--ph-line);
-  color: var(--ph-tag-ink);
-  font: 800 .72em/1.4 var(--display);
-  letter-spacing: .08em;
+  color: var(--ph-tag);
+  font: 800 .78em/1 var(--display);
+  font-stretch: 115%;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  vertical-align: .12em;
 }
+/* On the dark teal board the same marker switches to light text and the sign yellow. */
+.board .ph { --ph-ink: var(--cream); --ph-line: var(--sign-yellow); --ph-tag: var(--sign-yellow); }
 html[lang="es"] .ph::before { content: "Pendiente"; }
 
 /* ---------- About ---------- */
