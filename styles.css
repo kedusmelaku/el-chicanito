@@ -24,17 +24,20 @@
   --shade: #6E1B0D;         /* letter drop shade */
   --marigold: #E8A317;
   --marigold-hi: #F3B935;
-  --sign-yellow: #FFD34D;   /* yellow lettering on red and teal (contrast-safe) */
+  --sign-yellow: #FFD34D;   /* yellow lettering on red (large text only) and on teal or ink */
   --ink: #1E1813;
   --ink-soft: #4A3F35;
   --teal: #1F5E5B;
   --cream: #FFF4E2;
   --open: #7FE0A6;
+  --shadow: rgb(70 40 0 / .35);
+  --cream-wash: rgb(255 244 226 / .14);
 
   /* placeholders: deliberately off-palette so they are easy to find */
   --ph-bg: #FFE1F0;
   --ph-line: #D6157A;
   --ph-ink: #5C0A35;
+  --ph-tag-ink: #FFFFFF;
 
   --display: "Anybody", "Arial Narrow", sans-serif;
   --body: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, sans-serif;
@@ -51,14 +54,20 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgb(232 163 23 / .3);
   scroll-behavior: smooth;
   scroll-padding-top: 4.5rem;
+  scroll-padding-bottom: calc(var(--dock-h) + 1rem);
   scrollbar-color: var(--red) var(--wall-deep);
+  color-scheme: light;
 }
 
 /* Bilingual: show only the active language. The toggle buttons keep their own lang. */
 html[lang="en"] [lang="es"]:not(.lang__btn),
 html[lang="es"] [lang="en"]:not(.lang__btn) { display: none !important; }
+
+/* Without JavaScript the page is English only, so the toggles would do nothing: hide them. */
+html:not(.js) .lang { display: none; }
 
 body {
   margin: 0;
@@ -84,6 +93,8 @@ a { color: inherit; }
   text-underline-offset: .2em;
 }
 .link:hover { text-decoration-thickness: 3px; }
+.link--pad { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.link--inline { display: inline-block; padding-block: .6rem; margin-block: -.6rem; }
 
 :focus-visible {
   outline: 3px solid var(--focus, var(--ink));
@@ -92,6 +103,7 @@ a { color: inherit; }
 }
 
 h1, h2, h3 { margin: 0; text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; }
 address { font-style: normal; }
@@ -103,8 +115,9 @@ address { font-style: normal; }
 }
 
 .skip {
-  position: absolute; left: var(--gutter); top: -3rem; z-index: 30;
-  background: var(--marigold); color: var(--ink); padding: .5rem .9rem;
+  position: absolute; left: var(--gutter); top: -4rem; z-index: 30;
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+  background: var(--marigold); color: var(--ink); padding: 0 1rem;
   font-weight: 700; border-radius: var(--radius);
 }
 .skip:focus { top: .5rem; }
@@ -115,18 +128,22 @@ address { font-style: normal; }
   stroke-linecap: round; stroke-linejoin: round;
 }
 
+/* Section grids never grow wider than the screen, even at large text sizes. */
+.visit, .order, .menu, .about, .close, .order__boards { grid-template-columns: minmax(0, 1fr); }
+
 /* ---------- Top bar ---------- */
 .bar {
-  --focus: var(--marigold);
+  --focus: var(--cream);
   position: sticky; top: 0; z-index: 20;
-  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .75rem;
   min-height: 3.5rem;
-  padding: .5rem var(--gutter);
-  padding-top: max(.5rem, env(safe-area-inset-top));
+  padding: .4rem var(--gutter);
+  padding-top: max(.4rem, env(safe-area-inset-top));
   background: var(--ink);
   color: var(--cream);
 }
 .bar__name {
+  display: inline-flex; align-items: center; min-height: 2.75rem;
   font-family: var(--display);
   font-stretch: 125%;
   font-weight: 800;
@@ -135,6 +152,7 @@ address { font-style: normal; }
   text-transform: uppercase;
   text-decoration: none;
 }
+.bar__tel { display: none; }
 
 .lang {
   display: inline-flex;
@@ -146,21 +164,28 @@ address { font-style: normal; }
   appearance: none;
   border: 0;
   margin: 0;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0 .85rem;
   border-radius: 999px;
   background: transparent;
   color: var(--cream);
   font: 700 1rem/1 var(--body);
   cursor: pointer;
+  touch-action: manipulation;
   transition: background-color .2s var(--ease-out), color .2s var(--ease-out);
 }
 .lang__btn[aria-pressed="true"] { background: var(--marigold); color: var(--ink); }
-.lang__btn[aria-pressed="false"]:hover { background: rgb(232 163 23 / .18); }
+.lang__btn[aria-pressed="false"]:hover { background: rgb(232 163 23 / .2); }
+.lang__btn:focus-visible { outline-color: var(--cream); outline-offset: 1px; }
+
+@media (max-width: 22.5rem) {
+  .bar__name { font-size: .9rem; font-stretch: 100%; }
+  .lang__btn { padding: 0 .6rem; }
+}
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .6rem;
   min-height: 3.5rem;
   padding: .6rem 1.25rem;
   border: 3px solid var(--ink);
@@ -179,8 +204,10 @@ address { font-style: normal; }
 .btn--call { background: var(--marigold); color: var(--ink); }
 .btn--call:hover { background: var(--marigold-hi); }
 .btn--line { background: transparent; color: var(--cream); border-color: var(--cream); }
-.btn--line:hover { background: rgb(255 244 226 / .12); }
+.btn--line:hover { background: var(--cream-wash); }
 .btn--wide { width: 100%; }
+.btn__stack { display: grid; justify-items: start; text-align: left; gap: .15rem; }
+.btn__num { font-family: var(--body); font-weight: 700; font-size: 1rem; }
 
 /* ---------- 1. Front: the sign ---------- */
 .front {
@@ -189,7 +216,9 @@ address { font-style: normal; }
   color: var(--cream);
   padding: 1.75rem var(--gutter) 2rem;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
+  overflow-wrap: break-word;
 }
 
 .sign { display: grid; justify-items: start; line-height: 1; }
@@ -204,21 +233,21 @@ address { font-style: normal; }
 }
 .sign__name {
   font-family: var(--display);
-  font-stretch: 50%;
-  font-weight: 900;
-  font-size: clamp(4.5rem, 30.5vw, 12rem);
-  line-height: .86;
-  letter-spacing: -.01em;
+  font-stretch: 64%;
+  font-weight: 850;
+  font-size: clamp(min(4rem, 20vw), 22.5vw, 11rem);
+  line-height: .9;
+  letter-spacing: .02em;
   text-transform: uppercase;
   color: var(--cream);
-  -webkit-text-stroke: .045em var(--ink);
+  -webkit-text-stroke: .03em var(--ink);
   paint-order: stroke fill;
   /* the sign painter's drop shade */
   text-shadow:
     .01em .01em 0 var(--shade), .02em .02em 0 var(--shade),
     .03em .03em 0 var(--shade), .04em .04em 0 var(--shade),
     .05em .05em 0 var(--shade), .06em .06em 0 var(--shade);
-  margin: .02em 0 .12em;
+  margin: .04em 0 .14em;
 }
 .sign__kind {
   font-family: var(--display);
@@ -236,6 +265,8 @@ address { font-style: normal; }
   display: flex; flex-wrap: wrap; gap: .1rem .9rem;
   padding: .7rem 0;
   border-block: 2px solid var(--sign-yellow);
+  /* The box starts 1rem early and is clipped back, which hides the
+     separator dot in front of the first item on every wrapped line. */
   margin-left: -1rem;
   padding-left: 1rem;
   clip-path: inset(-2px 0 -2px 1rem);
@@ -257,14 +288,14 @@ address { font-style: normal; }
 
 .front__info { display: grid; gap: .75rem; }
 .status {
-  display: inline-flex; align-items: center; gap: .55rem;
+  display: inline-flex; flex-wrap: wrap; max-width: 100%; align-items: center; gap: .55rem;
   justify-self: start;
-  padding: .35rem .8rem .35rem .65rem;
+  padding: .4rem .85rem .4rem .7rem;
   border-radius: 999px;
   background: var(--ink);
   color: var(--cream);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 .status[hidden] { display: none; }
 .status__dot {
@@ -274,8 +305,10 @@ address { font-style: normal; }
 }
 .status.is-closed .status__dot { background: transparent; box-shadow: inset 0 0 0 2px var(--cream); }
 .front__addr { font-size: 1.125rem; line-height: 1.45; }
+/* With JavaScript the live status pill carries the hours; without it, show them here. */
+html.js .front__hours-static { display: none; }
 
-.front__actions { display: grid; gap: .75rem; }
+.front__actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
 
 /* ---------- 2. Visit: hours and directions ---------- */
 .visit {
@@ -286,7 +319,6 @@ address { font-style: normal; }
 
 .board {
   --focus: var(--cream);
-  position: relative;
   background: var(--teal);
   color: var(--cream);
   border-radius: var(--radius);
@@ -307,9 +339,8 @@ address { font-style: normal; }
   font-family: var(--display);
   font-stretch: 50%;
   font-weight: 900;
-  font-size: clamp(3.25rem, 16vw, 6rem);
+  font-size: clamp(min(3rem, 14vw), 16vw, 6rem);
   line-height: .95;
-  white-space: nowrap;
   text-transform: uppercase;
   margin: .3rem 0 .9rem;
 }
@@ -336,8 +367,7 @@ address { font-style: normal; }
 }
 .visit__where address { font-size: 1.25rem; line-height: 1.4; }
 .visit__near { color: var(--ink-soft); }
-.visit__links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-bottom: .75rem; }
-.visit__links .link { display: inline-block; padding: .35rem 0; }
+.visit__links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
 
 /* ---------- 3. Order ahead ---------- */
 .order {
@@ -351,7 +381,7 @@ address { font-style: normal; }
   font-family: var(--display);
   font-stretch: 55%;
   font-weight: 900;
-  font-size: clamp(4rem, 22vw, 9rem);
+  font-size: clamp(min(3.5rem, 18vw), 22vw, 9rem);
   line-height: .85;
   text-transform: uppercase;
   color: var(--ink);
@@ -364,7 +394,7 @@ address { font-style: normal; }
   background: var(--paper);
   border-radius: var(--radius);
   padding: 1.4rem 1.25rem 1.25rem;
-  box-shadow: 0 .4rem 1rem -0.4rem rgb(70 40 0 / .35);
+  box-shadow: 0 .4rem 1rem -.4rem var(--shadow);
   border-top: 3px dashed var(--ink);   /* torn from the pad */
 }
 .slip__title {
@@ -387,13 +417,13 @@ address { font-style: normal; }
   border-radius: 1px;
   transform: rotate(45deg);
 }
-.slip__terms { margin: 0; display: grid; gap: .5rem; border-top: 2px solid var(--wall-deep); padding-top: .9rem; }
-.slip__terms div { display: grid; gap: .15rem; }
+.slip__terms { margin: 0; display: grid; gap: .6rem; border-top: 2px solid var(--wall-deep); padding-top: .9rem; }
+.slip__terms div { display: grid; gap: .2rem; }
 .slip__terms dt {
   font-family: var(--display);
   font-stretch: 120%;
   font-weight: 800;
-  font-size: .85rem;
+  font-size: .875rem;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -405,7 +435,7 @@ address { font-style: normal; }
   background-color: var(--paper);
   border-radius: var(--radius);
   padding: 1.3rem 1.25rem 1.25rem;
-  box-shadow: 0 .4rem 1rem -0.4rem rgb(70 40 0 / .35);
+  box-shadow: 0 .4rem 1rem -.4rem var(--shadow);
 }
 .pad__title {
   font-family: var(--display);
@@ -438,54 +468,11 @@ address { font-style: normal; }
   color: var(--red-ink);
 }
 
-/* ---------- 4. Menu ---------- */
-.menu {
-  padding: 3rem var(--gutter) 2.5rem;
-  display: grid;
-  gap: 2rem;
-}
-.menu__title {
-  font-family: var(--display);
-  font-stretch: 55%;
-  font-weight: 900;
-  font-size: clamp(3.5rem, 18vw, 8rem);
-  line-height: .88;
-  text-transform: uppercase;
-  color: var(--red-ink);
-}
-.menu__note { color: var(--ink-soft); margin-top: -1.25rem; }
-
-.cat { display: grid; gap: .9rem; }
-.cat__text { display: grid; gap: .6rem; align-content: start; }
-.cat__name {
-  font-family: var(--display);
-  font-stretch: 65%;
-  font-weight: 900;
-  font-size: 2.5rem;
-  line-height: .95;
-  text-transform: uppercase;
-  color: var(--ink);
-  padding-bottom: .3rem;
-  border-bottom: 4px solid var(--red);
-  justify-self: start;
-}
-.cat__items { list-style: none; display: grid; gap: .3rem; }
-.cat__more { margin-top: .25rem; }
-
-.cat-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem 1rem;
-}
-.cat--small { gap: .6rem; align-content: start; }
-.cat--small .cat__name { font-size: 1.75rem; border-bottom-width: 3px; }
-.cat--small .cat__items { font-size: 1rem; }
-
 .season {
   border: 3px solid var(--ink);
   border-radius: var(--radius);
   padding: 1.25rem;
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--ink);
   outline-offset: -.55rem;
 }
 .season__title {
@@ -495,9 +482,66 @@ address { font-style: normal; }
   font-size: 1.1rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--red-ink);
   margin-bottom: .5rem;
 }
+
+/* ---------- 4. Menu: a lettered board, then a strip of photos ---------- */
+.menu {
+  padding: 3rem var(--gutter) 2.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+.menu__title {
+  font-family: var(--display);
+  font-stretch: 55%;
+  font-weight: 900;
+  font-size: clamp(min(3rem, 15vw), 15vw, 6.5rem);
+  line-height: .88;
+  text-transform: uppercase;
+  color: var(--red-ink);
+}
+.menu__note { color: var(--ink-soft); }
+
+.menuboard {
+  --focus: var(--sign-yellow);
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  outline: 2px solid var(--marigold);   /* pinstripe */
+  outline-offset: -.5rem;
+  margin-top: .5rem;
+}
+.row {
+  display: grid;
+  gap: .2rem;
+  padding: .9rem .25rem;
+}
+.row + .row { border-top: 1px solid rgb(255 244 226 / .22); }
+.row__name {
+  font-family: var(--display);
+  font-stretch: 62%;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--sign-yellow);
+}
+.row__items { font-size: 1.05rem; line-height: 1.45; }
+.menuboard .link { color: var(--cream); }
+
+.strip {
+  --focus: var(--ink);
+  display: flex; gap: .75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: .5rem var(--gutter) 1rem;
+  scrollbar-width: thin;
+}
+.strip .photo { flex: none; width: min(15rem, 66vw); scroll-snap-align: start; }
 
 /* ---------- Photo placeholder frames ---------- */
 .photo { margin: 0; }
@@ -535,7 +579,6 @@ address { font-style: normal; }
   border-radius: 999px;
 }
 .photo__what { font-size: .95rem; line-height: 1.3; max-width: 22ch; }
-.cat--small .photo__what { font-size: .85rem; }
 
 /* ---------- Placeholders: easy to spot, easy to grep (class="ph") ---------- */
 .ph {
@@ -556,9 +599,10 @@ address { font-style: normal; }
   padding: .05em .35em;
   border-radius: 3px;
   background: var(--ph-line);
-  color: #fff;
-  font: 800 .7em/1.4 var(--display);
+  color: var(--ph-tag-ink);
+  font: 800 .72em/1.4 var(--display);
   letter-spacing: .08em;
+  text-transform: uppercase;
   vertical-align: .12em;
 }
 html[lang="es"] .ph::before { content: "Pendiente"; }
@@ -568,7 +612,7 @@ html[lang="es"] .ph::before { content: "Pendiente"; }
   padding: 0 var(--gutter) 3rem;
   display: grid;
   gap: .75rem;
-  max-width: 44rem;
+  max-width: calc(44rem + 2 * var(--gutter));
 }
 .about__title {
   font-family: var(--display);
@@ -580,10 +624,10 @@ html[lang="es"] .ph::before { content: "Pendiente"; }
   color: var(--red-ink);
 }
 
-/* ---------- Close ---------- */
+/* ---------- Close: the sign again ---------- */
 .close {
-  --focus: var(--marigold);
-  background: var(--ink);
+  --focus: var(--cream);
+  background: var(--red);
   color: var(--cream);
   padding: 2.5rem var(--gutter) 2rem;
   display: grid;
@@ -592,17 +636,33 @@ html[lang="es"] .ph::before { content: "Pendiente"; }
 }
 .close__name {
   font-family: var(--display);
-  font-stretch: 55%;
-  font-weight: 900;
-  font-size: clamp(3.25rem, 17vw, 7rem);
+  font-stretch: 64%;
+  font-weight: 850;
+  font-size: clamp(min(3rem, 15vw), 15vw, 6rem);
   line-height: .9;
+  letter-spacing: .02em;
   text-transform: uppercase;
-  color: var(--marigold);
+  -webkit-text-stroke: .03em var(--ink);
+  paint-order: stroke fill;
+  text-shadow: .02em .02em 0 var(--shade), .04em .04em 0 var(--shade);
 }
-.close__name span { display: block; font-stretch: 140%; font-size: 1.15rem; letter-spacing: .14em; color: var(--cream); }
+.close__name span {
+  display: block;
+  margin-top: .35rem;
+  font-stretch: 140%;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .14em;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
 .close__addr { font-size: 1.125rem; line-height: 1.6; }
-.close__addr a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: .2em; }
-.close__fine { font-size: .9rem; color: #CFC2AE; }
+.close__addr a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: .2em; display: inline-block; padding-block: .5rem; margin-block: -.5rem; }
+.close .lang { border-color: var(--cream); }
+.close .lang__btn { color: var(--cream); }
+.close .lang__btn[aria-pressed="true"] { background: var(--cream); color: var(--ink); }
+.close .lang__btn[aria-pressed="false"]:hover { background: var(--cream-wash); }
+.close__fine { font-size: .9rem; }
 
 /* ---------- Dock: always-reachable call ---------- */
 .dock {
@@ -616,7 +676,7 @@ html[lang="es"] .ph::before { content: "Pendiente"; }
   transition: transform .35s var(--ease-out);
 }
 .dock a {
-  display: flex; align-items: center; justify-content: center; gap: .55rem;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
   min-height: 3.15rem;
   border-radius: var(--radius);
   text-decoration: none;
@@ -625,11 +685,12 @@ html[lang="es"] .ph::before { content: "Pendiente"; }
   font-size: 1.1rem;
   touch-action: manipulation;
 }
-.dock__call { flex: 1; background: var(--marigold); color: var(--ink); }
+.dock__call { flex: 1 1 auto; min-width: 0; background: var(--marigold); color: var(--ink); padding: 0 .75rem; }
 .dock__call:hover { background: var(--marigold-hi); }
-.dock__map { width: 3.6rem; flex: none; border: 2px solid var(--cream); color: var(--cream); }
-.dock__map:hover { background: rgb(255 244 226 / .12); }
+.dock__map { flex: none; padding: 0 .9rem; border: 2px solid var(--cream); color: var(--cream); }
+.dock__map:hover { background: var(--cream-wash); }
 html.js .dock.is-tucked { transform: translateY(110%); }
+.dock:focus-within { transform: none !important; }
 
 /* ---------- Motion: the shade paints in once ---------- */
 @media (prefers-reduced-motion: no-preference) {
@@ -648,13 +709,26 @@ html.js .dock.is-tucked { transform: translateY(110%); }
   :root { --gutter: 2rem; }
   .front__actions { grid-template-columns: auto auto; justify-content: start; }
   .order__boards { grid-template-columns: 1fr 1fr; }
-  .cat-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .row { grid-template-columns: 13rem 1fr; gap: 1.5rem; align-items: baseline; }
   .dock { left: 50%; right: auto; width: min(30rem, 100% - 2rem); transform: translateX(-50%); border-radius: 1rem 1rem 0 0; }
   html.js .dock.is-tucked { transform: translate(-50%, 110%); }
+  .dock:focus-within { transform: translateX(-50%) !important; }
 }
 
 @media (min-width: 60rem) {
   :root { --gutter: max(2.5rem, (100vw - var(--max)) / 2); }
+  body { padding-bottom: 0; }
+
+  /* Desktop: the phone number lives in the bar, so the dock is not needed. */
+  .bar__tel {
+    display: inline-block; padding-block: .6rem;
+    margin-left: auto;
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: .2em;
+  }
+  .dock { display: none; }
+
   .front {
     grid-template-columns: 1.4fr 1fr;
     grid-template-areas: "sign info" "window window" "actions actions";
@@ -663,24 +737,36 @@ html.js .dock.is-tucked { transform: translateY(110%); }
     padding-block: 3rem 2.75rem;
   }
   .sign { grid-area: sign; }
-  .sign__name { font-size: clamp(8rem, 15vw, 13rem); }
+  .sign__name { font-size: clamp(7rem, 12vw, 11rem); }
   .front__info { grid-area: info; padding-bottom: 1.2rem; }
   .window { grid-area: window; font-size: 1.15rem; }
   .front__actions { grid-area: actions; }
 
-  .visit { grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; padding-block: 4rem; }
+  .visit {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "board where" "photo where";
+    gap: 2rem 3rem;
+    align-items: start;
+    padding-block: 4rem;
+  }
+  .board { grid-area: board; }
+  .visit__where { grid-area: where; }
+  .visit__photo { grid-area: photo; }
+
   .order { grid-template-columns: 1fr 1fr; column-gap: 3rem; padding-block: 4rem; }
   .order__title, .order__lede { grid-column: 1 / -1; }
-  .order__boards { grid-column: 1; grid-template-columns: 1fr; }
-  .pad { grid-column: 2; align-self: start; position: sticky; top: 5rem; }
+  .order__boards { grid-column: 1; grid-row: 3 / span 2; grid-template-columns: 1fr; }
+  .pad { grid-column: 2; grid-row: 3; align-self: start; }
+  .season { grid-column: 2; grid-row: 4; align-self: start; }
 
-  .menu { padding-block: 4.5rem 3rem; column-gap: 3rem; }
-  .cat { grid-template-columns: minmax(0, 30rem) 1fr; gap: 2.5rem; align-items: center; }
-  .cat--flip { grid-template-columns: 1fr minmax(0, 24rem); }
-  .cat--flip .photo { order: 2; }
-  .cat--feature { grid-template-columns: minmax(0, 40rem) 1fr; }
-  .cat--small { grid-template-columns: 1fr; align-items: start; }
-  .cat-row { gap: 2rem; }
+  .menu { padding-block: 4.5rem 3rem; }
+  .menuboard { padding: 1.5rem 2.25rem; }
+  .row__name { font-size: 2.4rem; }
+  .strip { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
+  .strip .photo { width: 15rem; }
+
   .close { grid-template-columns: 1fr auto; align-items: end; }
   .close__fine { grid-column: 1 / -1; }
 }
+
+main:focus { outline: none; }  /* skip-link target only; it is not an interactive control */

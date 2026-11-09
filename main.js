@@ -27,6 +27,12 @@
     }
     if (save) {
       try { localStorage.setItem("lang", lang); } catch (e) { /* storage blocked: choice lasts this visit */ }
+      try {
+        /* Keep the address bar shareable: ?lang=es opens in Spanish. */
+        var url = new URL(location.href);
+        url.searchParams.set("lang", lang);
+        history.replaceState(null, "", url);
+      } catch (e) { /* older browser: fine without it */ }
     }
   }
 
@@ -38,8 +44,14 @@
 
   setLang(doc.lang, false);
 
-  /* ---------- Open now (bakery time: America/Chicago, every day 5:00 to 21:00) ---------- */
+  /* ---------- Open now: hours come from the JSON-LD, in bakery time (America/Chicago) ---------- */
   var OPEN = 5, CLOSE = 21;
+  try {
+    var spec = JSON.parse(document.getElementById("business").textContent).openingHoursSpecification[0];
+    OPEN = parseInt(spec.opens, 10);
+    CLOSE = parseInt(spec.closes, 10);
+  } catch (e) { /* keep the defaults above */ }
+
   var statusEl = document.querySelector("[data-status]");
   var statusEn = document.querySelector("[data-status-en]");
   var statusEs = document.querySelector("[data-status-es]");
@@ -62,20 +74,22 @@
     try { now = chicagoHour(); } catch (e) { return; } /* no time zone support: keep it hidden */
     var open = now >= OPEN && now < CLOSE;
     statusEl.classList.toggle("is-closed", !open);
-    statusEn.textContent = open ? "Open now, until 9 PM" : "Closed now, opens at 5 AM";
-    statusEs.textContent = open ? "Abierto ahora, hasta las 9 p.m." : "Cerrado ahora, abre a las 5 a.m.";
+    statusEn.textContent = open ? "Open now, until 9\u00a0PM" : "Closed now, opens at 5\u00a0AM";
+    statusEs.textContent = open ? "Abierto ahora, hasta las 9\u00a0p.m." : "Cerrado ahora, abre a las 5\u00a0a.m.";
     statusEl.hidden = false;
   }
 
   updateStatus();
   setInterval(updateStatus, 60 * 1000);
 
-  /* ---------- Dock: tuck it away while the hero's own buttons are on screen ---------- */
+  /* ---------- Dock: tuck it away (and out of the tab order) while the hero's buttons show ---------- */
   var dock = document.querySelector("[data-dock]");
   var heroActions = document.querySelector("[data-hero-actions]");
   if (dock && heroActions && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
-      dock.classList.toggle("is-tucked", entries[0].isIntersecting);
+      var tucked = entries[0].isIntersecting;
+      dock.classList.toggle("is-tucked", tucked);
+      dock.inert = tucked;
     }).observe(heroActions);
   }
 })();
