@@ -25,29 +25,28 @@ Then open `http://localhost:8000/`. Useful links:
 Every unconfirmed item has a pink dashed tag on the page (TBD / Pendiente). To find them in the code, search `class="ph"`.
 
 1. Holiday hours (Hours board). Also, the "Open now" pill does not know about holidays yet.
-2. Cake sizes and servings
-3. Other cake flavors and fillings
-4. How many days ahead to order a cake
-5. Deposit: yes or no, and how much
-6. Which days tamales are made
-7. Tamale lead time: can customers order the night before and pick up in the morning?
-8. Tamales sold by the piece, the dozen, or both
-9. Seasonal orders: Christmas tamales, Rosca de Reyes, pan de muerto (which ones, and when to order)
-10. The other pan dulce, by name
-11. Empanada fillings
-12. Owner's story: who started El Chicanito, when, and why (owner writes or approves)
+2. The whole Big orders opening line: "Call ahead for whole cakes, whole flan, and tamales by the dozen" (placeholder wording)
+3. Order ahead: required or just recommended?
+4. How much notice for big orders
+5. Which days tamales are available
+6. Cake sizes, other flavors, deposit
+7. Seasonal items: Christmas tamales, Rosca de Reyes, pan de muerto
+8. The other pan dulce, by name
+9. Empanada fillings
+10. Owner's story: who started El Chicanito, when, and why (owner writes or approves)
 
 **Photos** (search `class="photo"`; each slot has the replacement `<img>` with its size and alt text in a comment):
 
 | Photo | Aspect ratio | Suggested size |
 |---|---|---|
-| Storefront from Dundee Rd, with the sign visible | 3:2 | 1200×800 |
-| Tray of conchas and pan dulce | 4:5 | 960×1200 |
-| Decorated birthday cake | 4:5 | 960×1200 |
-| Tamales, a few opened | 4:5 | 960×1200 |
-| Flan and gelatinas | 4:5 | 960×1200 |
-| Bolillos, plain and with cheese and jalapeño | 4:5 | 960×1200 |
-| Empanadas | 4:5 | 960×1200 |
+| Tray of conchas and pan dulce (the large menu photo) | 3:2 | 1200×800 |
+| Decorated tres leches cake | 1:1 | 1080×1080 |
+| Tamales, a few opened | 1:1 | 1080×1080 |
+| Bolillos | 1:1 | 1080×1080 |
+| Flan and gelatinas | 1:1 | 1080×1080 |
+| Empanadas | 1:1 | 1080×1080 |
+| The drinks cooler | 1:1 | 1080×1080 |
+| Storefront from Dundee Rd, with the sign visible (bottom of page) | 3:2 | 1200×800 |
 
 **Still unknown, not shown on the page:** logo, owner's name, founding year, prices (none on purpose).
 
@@ -60,11 +59,11 @@ Every unconfirmed item has a pink dashed tag on the page (TBD / Pendiente). To f
 
 I believe the Spanish is natural, but please have a native speaker confirm these lines:
 
-- "Encargos" as the section title, and "Encargos de temporada"
-- "díganos qué necesita y se lo tenemos listo para cuando pase" (usted register used throughout)
+- "Pedidos grandes" as the Big orders title, and "Llame con anticipación para pasteles enteros, flan entero y tamales por docena"
+- "Pase cuando guste, todos los días" for "Walk-ins welcome every day"
+- "Cuando llame, díganos qué quiere, cuántos y el día y la hora en que pasa a recoger" (usted register used throughout)
 - "Pasteles de cumpleaños y sobre pedido" for custom cakes
-- "qué quiere que diga" for the cake inscription
-- "Anticipación" as the label for order lead time, and "Anticipo" for deposit
+- "Encargar antes", "Anticipación" (notice) and "Anticipo" (deposit) as labels
 - "De puerco" vs "de cerdo" for pork tamales (puerco chosen as the more common Mexican usage)
 - Times written "de 5 a.m. a 9 p.m."
 - "Sitio de muestra. Contenido pendiente de aprobación." in the footer

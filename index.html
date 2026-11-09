@@ -73,34 +73,13 @@
 
 <main id="top" tabindex="-1">
 
-  <!-- 1. The storefront sign -->
+  <!-- 1. The storefront sign + call -->
   <section class="front" aria-labelledby="name">
     <h1 id="name" class="sign" translate="no">
       <span class="sign__el">El</span>
       <span class="sign__name">Chicanito</span>
       <span class="sign__kind"><span lang="en">Mexican bakery</span><span lang="es">Panadería mexicana</span></span>
     </h1>
-
-    <ul class="window">
-      <li>Pan dulce</li>
-      <li>Bolillos</li>
-      <li>Tamales</li>
-      <li><span lang="en">Cakes</span><span lang="es">Pasteles</span></li>
-      <li>Flan</li>
-      <li>Gelatinas</li>
-      <li>Empanadas</li>
-    </ul>
-
-    <div class="front__info">
-      <p class="status" data-status aria-live="polite" hidden>
-        <span class="status__dot" aria-hidden="true"></span>
-        <span lang="en" data-status-en></span><span lang="es" data-status-es></span>
-      </p>
-      <p class="front__addr">
-        <span translate="no">1164 E Dundee Rd, Palatine, IL 60074</span>
-        <span class="front__hours-static"><br><span lang="en">Every day, 5&nbsp;AM to 9&nbsp;PM</span><span lang="es">Todos los días, de 5&nbsp;a.m. a 9&nbsp;p.m.</span></span>
-      </p>
-    </div>
 
     <div class="front__actions" data-hero-actions>
       <a class="btn btn--call" href="tel:+18472215447">
@@ -116,191 +95,156 @@
 
   <!-- 2. Hours and directions -->
   <section class="visit" id="visit" aria-labelledby="visit-h">
-    <h2 id="visit-h" class="sr-only"><span lang="en">Hours and directions</span><span lang="es">Horario y cómo llegar</span></h2>
     <div class="board">
-      <h3 class="board__title">
-        <span lang="en">Open every day</span><span lang="es">Abierto todos los días</span>
-      </h3>
-      <p class="board__hours">
-        <span lang="en">5&nbsp;AM <small>to</small> 9&nbsp;PM</span><span lang="es">5&nbsp;a.m. <small>a</small> 9&nbsp;p.m.</span>
-      </p>
+      <div class="board__when">
+        <h2 id="visit-h" class="board__title">
+          <span lang="en">Walk-ins welcome every day</span><span lang="es">Pase cuando guste, todos los días</span>
+        </h2>
+        <p class="board__hours">
+          <span lang="en">5&nbsp;AM <small>to</small> 9&nbsp;PM</span><span lang="es">5&nbsp;a.m. <small>a</small> 9&nbsp;p.m.</span>
+        </p>
+        <p class="status" data-status aria-live="polite" hidden>
+          <span class="status__dot" aria-hidden="true"></span>
+          <span lang="en" data-status-en></span><span lang="es" data-status-es></span>
+        </p>
+      </div>
+      <div class="board__where">
+        <address translate="no">1164 E Dundee Rd<br>Palatine, IL 60074</address>
+        <p class="board__near"><span lang="en">Near Dundee Rd and Rand Rd</span><span lang="es">Cerca de Dundee y Rand</span></p>
+      </div>
       <p class="board__note">
         <span lang="en">Holiday hours:</span><span lang="es">Horario en días festivos:</span>
         <span class="ph"><span lang="en">owner to confirm</span><span lang="es">por confirmar</span></span>
       </p>
     </div>
+  </section>
 
-    <div class="visit__where">
-      <h3 class="visit__h"><span lang="en">Find us</span><span lang="es">Dónde estamos</span></h3>
-      <address translate="no">
-        <strong>El Chicanito Bakery</strong><br>
-        1164 E Dundee Rd<br>
-        Palatine, IL 60074
-      </address>
-      <p class="visit__near"><span lang="en">Near Dundee Rd and Rand Rd</span><span lang="es">Cerca de Dundee y Rand</span></p>
-      <p class="visit__links">
-        <a class="link link--pad" href="https://www.google.com/maps/search/?api=1&amp;query=El%20Chicanito%20Bakery%2C%201164%20E%20Dundee%20Rd%2C%20Palatine%2C%20IL%2060074"><span lang="en">Open in Google Maps</span><span lang="es">Abrir en Google Maps</span></a>
-        <a class="link link--pad" href="tel:+18472215447">(847) 221-5447</a>
-      </p>
+  <!-- 3. What they sell, by category, photo first -->
+  <section class="menu" id="menu" aria-labelledby="menu-h">
+    <div class="menu__head">
+      <h2 id="menu-h" class="menu__title"><span lang="en">What we sell</span><span lang="es">Lo que vendemos</span></h2>
+      <p class="menu__note"><span lang="en">Ask for prices at the counter or by phone.</span><span lang="es">Pregunte por los precios en el mostrador o por teléfono.</span></p>
     </div>
 
-    <figure class="photo visit__photo" style="--ratio: 3 / 2">
+    <ul class="tray">
+      <li class="item item--feature">
+        <figure class="photo" style="--ratio: 3 / 2">
+          <!-- Replace with: <img src="photos/pan-dulce.jpg" width="1200" height="800" alt="A tray of conchas and assorted pan dulce" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 3:2</span>
+            <span class="photo__what"><span lang="en">A full tray of conchas and pan dulce</span><span lang="es">Una charola llena de conchas y pan dulce</span></span>
+          </div>
+        </figure>
+        <h3 class="item__name">Pan dulce</h3>
+        <p class="item__desc"><span lang="en">Conchas and assorted sweet bread.</span><span lang="es">Conchas y pan dulce surtido.</span> <span class="ph"><span lang="en">other breads by name</span><span lang="es">nombres de los demás panes</span></span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/tres-leches.jpg" width="1080" height="1080" alt="A decorated tres leches cake" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what"><span lang="en">A decorated tres leches cake</span><span lang="es">Un pastel de tres leches decorado</span></span>
+          </div>
+        </figure>
+        <h3 class="item__name"><span lang="en">Cakes</span><span lang="es">Pasteles</span></h3>
+        <p class="item__desc"><span lang="en">Tres leches, chocolate or vanilla. Birthday and custom cakes.</span><span lang="es">De tres leches, de chocolate o de vainilla. De cumpleaños y sobre pedido.</span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/tamales.jpg" width="1080" height="1080" alt="Tamales in corn husks" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what"><span lang="en">Tamales, a few opened</span><span lang="es">Tamales, algunos abiertos</span></span>
+          </div>
+        </figure>
+        <h3 class="item__name">Tamales</h3>
+        <p class="item__desc"><span lang="en">Pork, pepper and cheese (rajas con queso), sweet pineapple.</span><span lang="es">De puerco, de rajas con queso, dulces de piña.</span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/bolillos.jpg" width="1080" height="1080" alt="Bolillos, some with cheese and jalapeño" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what">Bolillos</span>
+          </div>
+        </figure>
+        <h3 class="item__name">Bolillos</h3>
+        <p class="item__desc"><span lang="en">Plain, or with cheese and jalapeño.</span><span lang="es">Solos o con queso y jalapeño.</span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/flan.jpg" width="1080" height="1080" alt="Flan and tres leches gelatinas" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what"><span lang="en">Flan and gelatinas</span><span lang="es">Flan y gelatinas</span></span>
+          </div>
+        </figure>
+        <h3 class="item__name"><span lang="en">Flan &amp; gelatinas</span><span lang="es">Flan y gelatinas</span></h3>
+        <p class="item__desc"><span lang="en">Flan by the slice or whole. Tres leches gelatinas.</span><span lang="es">Flan por rebanada o entero. Gelatinas de tres leches.</span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/empanadas.jpg" width="1080" height="1080" alt="Empanadas" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what">Empanadas</span>
+          </div>
+        </figure>
+        <h3 class="item__name">Empanadas</h3>
+        <p class="item__desc"><span class="ph"><span lang="en">fillings</span><span lang="es">rellenos</span></span></p>
+      </li>
+      <li class="item">
+        <figure class="photo" style="--ratio: 1 / 1">
+          <!-- Replace with: <img src="photos/drinks.jpg" width="1080" height="1080" alt="Jarritos in the cooler" loading="lazy"> -->
+          <div class="photo__slot">
+            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
+            <span class="photo__what"><span lang="en">The drinks cooler</span><span lang="es">El refrigerador de bebidas</span></span>
+          </div>
+        </figure>
+        <h3 class="item__name"><span lang="en">Drinks</span><span lang="es">Bebidas</span></h3>
+        <p class="item__desc"><span lang="en">Jarritos and other drinks.</span><span lang="es">Jarritos y otras bebidas.</span></p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 4. Big orders (smaller; ordering policy not confirmed) -->
+  <section class="order" id="order" aria-labelledby="order-h">
+    <div class="slip">
+      <h2 id="order-h" class="slip__title"><span lang="en">Big orders</span><span lang="es">Pedidos grandes</span></h2>
+      <p class="slip__lede"><span class="ph"><span lang="en">Call ahead for whole cakes, whole flan, and tamales by the dozen.</span><span lang="es">Llame con anticipación para pasteles enteros, flan entero y tamales por docena.</span></span></p>
+      <ul class="slip__facts">
+        <li><span lang="en">Whole tres leches cakes, chocolate or vanilla, plus birthday and custom cakes</span><span lang="es">Pasteles enteros de tres leches, de chocolate o de vainilla, y pasteles de cumpleaños o sobre pedido</span></li>
+        <li><span lang="en">Whole flan for parties</span><span lang="es">Flan entero para fiestas</span></li>
+        <li><span lang="en">Tamales by the dozen: pork, rajas con queso, sweet pineapple</span><span lang="es">Tamales por docena: de puerco, de rajas con queso, dulces de piña</span></li>
+      </ul>
+      <dl class="slip__terms">
+        <div><dt><span lang="en">Order ahead</span><span lang="es">Encargar antes</span></dt><dd><span class="ph"><span lang="en">required or just recommended?</span><span lang="es">¿obligatorio o solo recomendado?</span></span></dd></div>
+        <div><dt><span lang="en">Notice</span><span lang="es">Anticipación</span></dt><dd><span class="ph"><span lang="en">how many days or hours ahead</span><span lang="es">cuántos días u horas antes</span></span></dd></div>
+        <div><dt><span lang="en">Tamale days</span><span lang="es">Días de tamales</span></dt><dd><span class="ph"><span lang="en">which days tamales are available</span><span lang="es">qué días hay tamales</span></span></dd></div>
+        <div><dt><span lang="en">Cakes</span><span lang="es">Pasteles</span></dt><dd><span class="ph"><span lang="en">sizes, other flavors, deposit</span><span lang="es">tamaños, otros sabores, anticipo</span></span></dd></div>
+        <div><dt><span lang="en">Seasonal</span><span lang="es">De temporada</span></dt><dd><span class="ph"><span lang="en">Christmas tamales, Rosca de Reyes, pan de muerto</span><span lang="es">tamales navideños, Rosca de Reyes, pan de muerto</span></span></dd></div>
+      </dl>
+      <p class="slip__tell"><span lang="en">When you call, tell us what you want, how many, and the day and time you’ll pick it up.</span><span lang="es">Cuando llame, díganos qué quiere, cuántos y el día y la hora en que pasa a recoger.</span></p>
+      <a class="btn btn--call btn--wide" href="tel:+18472215447">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="btn__stack"><span><span lang="en">Call About an Order</span><span lang="es">Llame para encargar</span></span> <span class="btn__num">(847) 221-5447</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. About -->
+  <section class="about" aria-labelledby="about-h">
+    <div class="about__text">
+      <h2 id="about-h" class="about__title"><span lang="en">The bakery</span><span lang="es">La panadería</span></h2>
+      <p><span class="ph"><span lang="en">Owner’s story: who started El Chicanito, when, and why. Owner to write or approve.</span><span lang="es">La historia: quién fundó El Chicanito, cuándo y por qué. El dueño la escribe o la aprueba.</span></span></p>
+    </div>
+    <figure class="photo" style="--ratio: 3 / 2">
       <!-- Replace with: <img src="photos/storefront.jpg" width="1200" height="800" alt="El Chicanito Bakery storefront on Dundee Rd" loading="lazy"> -->
       <div class="photo__slot">
         <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 3:2</span>
         <span class="photo__what"><span lang="en">The storefront from Dundee Rd, sign visible</span><span lang="es">La fachada desde Dundee Rd, con el letrero</span></span>
       </div>
     </figure>
-  </section>
-
-  <!-- 3. How to order: the main selling point -->
-  <section class="order" id="order" aria-labelledby="order-h">
-    <h2 id="order-h" class="order__title">
-      <span lang="en">Order ahead</span><span lang="es">Encargos</span>
-    </h2>
-    <p class="order__lede">
-      <span lang="en">Cakes for the birthday, flan for the party, tamales for the whole family. Call the bakery, tell us what you need, and we’ll have it ready when you come in.</span>
-      <span lang="es">El pastel para el cumpleaños, el flan para la fiesta, los tamales para toda la familia. Llame a la panadería, díganos qué necesita y se lo tenemos listo para cuando pase.</span>
-    </p>
-
-    <div class="order__boards">
-      <article class="slip" aria-labelledby="cakes-h">
-        <h3 id="cakes-h" class="slip__title"><span lang="en">Cakes &amp; flan</span><span lang="es">Pasteles y flan</span></h3>
-        <ul class="slip__facts">
-          <li><span lang="en">Tres leches cakes, chocolate or vanilla</span><span lang="es">Pasteles de tres leches, de chocolate o de vainilla</span></li>
-          <li><span lang="en">Birthday and custom cakes</span><span lang="es">Pasteles de cumpleaños y sobre pedido</span></li>
-          <li><span lang="en">Whole flan for parties</span><span lang="es">Flan entero para fiestas</span></li>
-        </ul>
-        <dl class="slip__terms">
-          <div><dt><span lang="en">Sizes</span><span lang="es">Tamaños</span></dt><dd><span class="ph"><span lang="en">sizes and servings</span><span lang="es">tamaños y porciones</span></span></dd></div>
-          <div><dt><span lang="en">Flavors</span><span lang="es">Sabores</span></dt><dd><span class="ph"><span lang="en">other flavors and fillings</span><span lang="es">otros sabores y rellenos</span></span></dd></div>
-          <div><dt><span lang="en">How far ahead</span><span lang="es">Anticipación</span></dt><dd><span class="ph"><span lang="en">number of days</span><span lang="es">cuántos días antes</span></span></dd></div>
-          <div><dt><span lang="en">Deposit</span><span lang="es">Anticipo</span></dt><dd><span class="ph"><span lang="en">yes or no, and how much</span><span lang="es">sí o no, y de cuánto</span></span></dd></div>
-        </dl>
-      </article>
-
-      <article class="slip" aria-labelledby="tamales-h">
-        <h3 id="tamales-h" class="slip__title">Tamales</h3>
-        <ul class="slip__facts">
-          <li><span lang="en">Pork</span><span lang="es">De puerco</span></li>
-          <li><span lang="en">Pepper and cheese (rajas con queso)</span><span lang="es">De rajas con queso</span></li>
-          <li><span lang="en">Sweet pineapple</span><span lang="es">Dulces de piña</span></li>
-        </ul>
-        <dl class="slip__terms">
-          <div><dt><span lang="en">Days</span><span lang="es">Días</span></dt><dd><span class="ph"><span lang="en">which days tamales are made</span><span lang="es">qué días hay tamales</span></span></dd></div>
-          <div><dt><span lang="en">How far ahead</span><span lang="es">Anticipación</span></dt><dd><span class="ph"><span lang="en">order the night before, pick up in the morning</span><span lang="es">encargar la noche anterior y recoger en la mañana</span></span></dd></div>
-          <div><dt><span lang="en">Sold by</span><span lang="es">Se venden por</span></dt><dd><span class="ph"><span lang="en">each, dozen, or both</span><span lang="es">pieza, docena o ambos</span></span></dd></div>
-        </dl>
-      </article>
-    </div>
-
-    <div class="pad">
-      <h3 class="pad__title"><span lang="en">When you call, tell us</span><span lang="es">Cuando llame, díganos</span></h3>
-      <ol class="pad__lines">
-        <li><span lang="en">Your name</span><span lang="es">Su nombre</span></li>
-        <li><span lang="en">What you want and how many</span><span lang="es">Qué quiere y cuántos</span></li>
-        <li><span lang="en">The day and time you’ll pick up</span><span lang="es">El día y la hora en que pasa a recoger</span></li>
-        <li><span lang="en">For cakes: flavor, size, and what it should say</span><span lang="es">Para pasteles: sabor, tamaño y qué quiere que diga</span></li>
-      </ol>
-      <a class="btn btn--call btn--wide" href="tel:+18472215447">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        <span class="btn__stack"><span><span lang="en">Call to Order</span><span lang="es">Llame para encargar</span></span> <span class="btn__num">(847) 221-5447</span></span>
-      </a>
-    </div>
-
-    <aside class="season" aria-labelledby="season-h">
-      <h3 id="season-h" class="season__title"><span lang="en">Seasonal orders</span><span lang="es">Encargos de temporada</span></h3>
-      <p><span class="ph"><span lang="en">Christmas tamales, Rosca de Reyes, pan de muerto: which ones, and when to order</span><span lang="es">Tamales navideños, Rosca de Reyes, pan de muerto: cuáles hay y cuándo encargarlos</span></span></p>
-    </aside>
-  </section>
-
-  <!-- 4. What they sell: the menu board -->
-  <section class="menu" id="menu" aria-labelledby="menu-h">
-    <h2 id="menu-h" class="menu__title"><span lang="en">What we sell</span><span lang="es">Lo que vendemos</span></h2>
-    <p class="menu__note"><span lang="en">Ask for prices at the counter or by phone.</span><span lang="es">Pregunte por los precios en el mostrador o por teléfono.</span></p>
-
-    <div class="menuboard">
-      <div class="row">
-        <h3 class="row__name">Pan dulce</h3>
-        <p class="row__items"><span lang="en">Conchas and assorted sweet bread.</span><span lang="es">Conchas y pan dulce surtido.</span> <span class="ph"><span lang="en">owner to name the other breads</span><span lang="es">nombres de los demás panes</span></span></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name">Bolillos</h3>
-        <p class="row__items"><span lang="en">Plain, or with cheese and jalapeño.</span><span lang="es">Solos o con queso y jalapeño.</span></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name">Tamales</h3>
-        <p class="row__items"><span lang="en">Pork, pepper and cheese (rajas con queso), sweet pineapple.</span><span lang="es">De puerco, de rajas con queso, dulces de piña.</span> <a class="link link--inline" href="#order"><span lang="en">How to Order</span><span lang="es">Cómo encargar</span></a></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name"><span lang="en">Cakes</span><span lang="es">Pasteles</span></h3>
-        <p class="row__items"><span lang="en">Tres leches, chocolate or vanilla. Birthday and custom cakes.</span><span lang="es">De tres leches, de chocolate o de vainilla. De cumpleaños y sobre pedido.</span> <a class="link link--inline" href="#order"><span lang="en">How to Order</span><span lang="es">Cómo encargar</span></a></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name"><span lang="en">Flan &amp; gelatinas</span><span lang="es">Flan y gelatinas</span></h3>
-        <p class="row__items"><span lang="en">Flan by the slice or whole for parties. Tres leches gelatinas.</span><span lang="es">Flan por rebanada o entero para fiestas. Gelatinas de tres leches.</span></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name">Empanadas</h3>
-        <p class="row__items"><span class="ph"><span lang="en">fillings</span><span lang="es">rellenos</span></span></p>
-      </div>
-      <div class="row">
-        <h3 class="row__name"><span lang="en">Drinks</span><span lang="es">Bebidas</span></h3>
-        <p class="row__items"><span lang="en">Jarritos and other drinks.</span><span lang="es">Jarritos y otras bebidas.</span></p>
-      </div>
-    </div>
-
-    <div class="strip" role="region" tabindex="0" aria-labelledby="strip-h">
-      <h3 id="strip-h" class="sr-only"><span lang="en">Photos</span><span lang="es">Fotos</span></h3>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/pan-dulce.jpg" width="960" height="1200" alt="A tray of conchas and assorted pan dulce" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what"><span lang="en">A full tray of conchas and pan dulce</span><span lang="es">Una charola llena de conchas y pan dulce</span></span>
-        </div>
-      </figure>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/tres-leches.jpg" width="960" height="1200" alt="A decorated tres leches birthday cake" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what"><span lang="en">A decorated birthday cake, whole</span><span lang="es">Un pastel de cumpleaños decorado, entero</span></span>
-        </div>
-      </figure>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/tamales.jpg" width="960" height="1200" alt="Tamales in corn husks" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what"><span lang="en">Tamales, a few opened to show the filling</span><span lang="es">Tamales, algunos abiertos para ver el relleno</span></span>
-        </div>
-      </figure>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/flan.jpg" width="960" height="1200" alt="Flan and tres leches gelatinas" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what"><span lang="en">Flan and gelatinas</span><span lang="es">Flan y gelatinas</span></span>
-        </div>
-      </figure>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/bolillos.jpg" width="960" height="1200" alt="Bolillos, some with cheese and jalapeño" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what"><span lang="en">Bolillos, plain and with cheese and jalapeño</span><span lang="es">Bolillos, solos y con queso y jalapeño</span></span>
-        </div>
-      </figure>
-      <figure class="photo" style="--ratio: 4 / 5">
-        <!-- Replace with: <img src="photos/empanadas.jpg" width="960" height="1200" alt="Empanadas" loading="lazy"> -->
-        <div class="photo__slot">
-          <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 4:5</span>
-          <span class="photo__what">Empanadas</span>
-        </div>
-      </figure>
-    </div>
-  </section>
-
-  <!-- 5. About -->
-  <section class="about" aria-labelledby="about-h">
-    <h2 id="about-h" class="about__title"><span lang="en">The bakery</span><span lang="es">La panadería</span></h2>
-    <p><span class="ph"><span lang="en">Owner’s story: who started El Chicanito, when, and why. Owner to write or approve.</span><span lang="es">La historia: quién fundó El Chicanito, cuándo y por qué. El dueño la escribe o la aprueba.</span></span></p>
   </section>
 </main>
 

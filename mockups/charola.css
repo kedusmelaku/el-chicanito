@@ -91,6 +91,13 @@ body { background: var(--board); color: var(--chalk); }
 .row__name { font-family: var(--display); font-stretch: 80%; text-transform: lowercase; color: var(--concha-pink); }
 .menuboard .link { color: var(--concha-yellow); }
 
+/* the menu items on the board */
+.item__name { font-family: var(--display); font-stretch: 80%; text-transform: lowercase; color: var(--chalk); border-bottom-color: var(--concha-pink); }
+.item__desc { color: rgb(241 230 210 / .85); }
+.board__near { color: rgb(241 230 210 / .75); }
+.slip__title { font-stretch: 80%; }
+
+/* (legacy strip styles below are unused by the current layout) */
 /* photos sit on a sheet pan, two by two, instead of a strip */
 .strip {
   display: grid;

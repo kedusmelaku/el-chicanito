@@ -16,7 +16,7 @@ Neighborhood regulars of a Mexican panadería in Palatine, IL, many Spanish-spea
 
 ## Product Purpose
 
-A spec website for El Chicanito Bakery, which has no website today. Success means a visitor can, within seconds: tap to call, see hours and get directions, understand how to order cakes and tamales ahead, and see what the bakery sells.
+A spec website for El Chicanito Bakery, which has no website today. Page goals, in order (revised by the user after the first build): 1) tap to call, always within reach on mobile; 2) hours and directions, walk-ins welcome every day 5 AM to 9 PM; 3) what they sell by category, with photos high on the page; 4) a smaller Big orders section for whole cakes, whole flan and tamales by the dozen, whose ordering wording is a placeholder (unconfirmed whether ordering ahead is required or recommended, how much notice, which tamale days).
 
 ## Positioning
 
@@ -48,7 +48,7 @@ Verified business facts above (Google listing, Nov 2026). Menu categories come f
 
 1. Calling is the main action and is always within thumb reach.
 2. Name, address and phone are unmistakable, so nobody ends up at the wrong bakery.
-3. Ordering ahead (cakes, flan, tamales) is the selling point, explained plainly.
+3. What they sell, shown with photos, comes before ordering details; big orders are secondary.
 4. Nothing unconfirmed passes as fact: every unknown is a visible placeholder the owner approves.
 5. Spanish and English are equals, not a translation bolted on.
 
