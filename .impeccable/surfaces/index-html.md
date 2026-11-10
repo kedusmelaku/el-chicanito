@@ -27,4 +27,4 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 ## Unresolved
 
-Every unknown in PRODUCT.md shows as a visible placeholder. Photos are aspect-correct frames until the user supplies them. Charola (direction C) may be mocked up later for comparison.
+Every unknown in PRODUCT.md shows as a visible placeholder. Photos come from Wikimedia Commons (openly licensed, listed in CREDITS.md) as stand-ins until the owner supplies real ones. Direction C (Charola) was rejected by the user.

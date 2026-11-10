@@ -426,7 +426,27 @@ address { font-style: normal; }
 .slip__tell { font-size: 1.05rem; border-top: 2px solid var(--wall-deep); padding-top: .9rem; }
 
 /* ---------- Photo placeholder frames ---------- */
-.photo { margin: 0; }
+.photo { margin: 0; position: relative; }
+.photo__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio, 4 / 3);
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--wall-deep);   /* holds the space while the image loads */
+}
+/* Stand-in photos are marked like every other unconfirmed item. */
+.photo__sample {
+  position: absolute; left: .5rem; bottom: .5rem;
+  padding: .2rem .5rem;
+  border-radius: 4px;
+  background: rgb(30 24 19 / .78);
+  color: var(--sign-yellow);
+  font: 800 .7rem/1.2 var(--display);
+  font-stretch: 115%;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
 .photo__slot {
   aspect-ratio: var(--ratio, 4 / 3);
   display: grid; place-content: center; justify-items: center; gap: .4rem;
@@ -645,3 +665,4 @@ html.js .dock.is-tucked { transform: translateY(110%); }
 }
 
 main:focus { outline: none; }  /* skip-link target only; it is not an interactive control */
+.close__fine a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: .2em; display: inline-block; padding-block: .5rem; margin-block: -.5rem; }

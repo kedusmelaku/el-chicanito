@@ -21,6 +21,13 @@
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", descriptions[lang]);
 
+    /* Image alt text: English lives in alt, Spanish in data-alt-es. */
+    var imgs = document.querySelectorAll("img[data-alt-es]");
+    for (var k = 0; k < imgs.length; k++) {
+      if (!imgs[k].hasAttribute("data-alt-en")) imgs[k].setAttribute("data-alt-en", imgs[k].alt);
+      imgs[k].alt = imgs[k].getAttribute(lang === "es" ? "data-alt-es" : "data-alt-en");
+    }
+
     var buttons = document.querySelectorAll("[data-set-lang]");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].setAttribute("aria-pressed", String(buttons[i].getAttribute("data-set-lang") === lang));

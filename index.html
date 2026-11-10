@@ -27,10 +27,6 @@
 <link rel="preload" href="fonts/anybody-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-next-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<script>
-  /* Design comparison only: ?look=charola layers the direction C mockup over this page. */
-  try { if (new URLSearchParams(location.search).get("look") === "charola") document.write('<link rel="stylesheet" href="mockups/charola.css">'); } catch (e) {}
-</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script type="application/ld+json" id="business">
 {
@@ -129,77 +125,70 @@
     <ul class="tray">
       <li class="item item--feature">
         <figure class="photo" style="--ratio: 3 / 2">
-          <!-- Replace with: <img src="photos/pan-dulce.jpg" width="1200" height="800" alt="A tray of conchas and assorted pan dulce" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 3:2</span>
-            <span class="photo__what"><span lang="en">A full tray of conchas and pan dulce</span><span lang="es">Una charola llena de conchas y pan dulce</span></span>
-          </div>
+          <img class="photo__img" src="images/pan-dulce-conchas.webp" width="960" height="640" loading="lazy" decoding="async"
+               alt="A rack of conchas, Mexican sweet bread rolls with crackled vanilla, chocolate and pink sugar tops"
+               data-alt-es="Un estante de conchas, pan dulce mexicano con costra de azúcar de vainilla, chocolate y rosa">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name">Pan dulce</h3>
         <p class="item__desc"><span lang="en">Conchas and assorted sweet bread.</span><span lang="es">Conchas y pan dulce surtido.</span> <span class="ph"><span lang="en">other breads by name</span><span lang="es">nombres de los demás panes</span></span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/tres-leches.jpg" width="1080" height="1080" alt="A decorated tres leches cake" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what"><span lang="en">A decorated tres leches cake</span><span lang="es">Un pastel de tres leches decorado</span></span>
-          </div>
+          <img class="photo__img" src="images/tres-leches.webp" width="960" height="960" loading="lazy" decoding="async"
+               alt="A tres leches cake in a glass pan, topped with whipped cream and maraschino cherries"
+               data-alt-es="Un pastel de tres leches en un refractario, cubierto de crema batida y cerezas">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name"><span lang="en">Cakes</span><span lang="es">Pasteles</span></h3>
         <p class="item__desc"><span lang="en">Tres leches, chocolate or vanilla. Birthday and custom cakes.</span><span lang="es">De tres leches, de chocolate o de vainilla. De cumpleaños y sobre pedido.</span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/tamales.jpg" width="1080" height="1080" alt="Tamales in corn husks" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what"><span lang="en">Tamales, a few opened</span><span lang="es">Tamales, algunos abiertos</span></span>
-          </div>
+          <img class="photo__img" src="images/tamales.webp" width="720" height="720" loading="lazy" decoding="async"
+               alt="A pot of tamales wrapped in corn husks, standing upright"
+               data-alt-es="Una olla de tamales envueltos en hojas de maíz, parados">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name">Tamales</h3>
         <p class="item__desc"><span lang="en">Pork, pepper and cheese (rajas con queso), sweet pineapple.</span><span lang="es">De puerco, de rajas con queso, dulces de piña.</span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/bolillos.jpg" width="1080" height="1080" alt="Bolillos, some with cheese and jalapeño" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what">Bolillos</span>
-          </div>
+          <img class="photo__img" src="images/bolillos.webp" width="960" height="960" loading="lazy" decoding="async"
+               alt="Two golden bolillo rolls in a woven basket"
+               data-alt-es="Dos bolillos dorados en una canasta tejida">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name">Bolillos</h3>
         <p class="item__desc"><span lang="en">Plain, or with cheese and jalapeño.</span><span lang="es">Solos o con queso y jalapeño.</span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/flan.jpg" width="1080" height="1080" alt="Flan and tres leches gelatinas" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what"><span lang="en">Flan and gelatinas</span><span lang="es">Flan y gelatinas</span></span>
-          </div>
+          <img class="photo__img" src="images/flan.webp" width="960" height="960" loading="lazy" decoding="async"
+               alt="A whole flan glazed with caramel sauce on a striped plate"
+               data-alt-es="Un flan entero bañado en caramelo sobre un plato de rayas">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name"><span lang="en">Flan &amp; gelatinas</span><span lang="es">Flan y gelatinas</span></h3>
         <p class="item__desc"><span lang="en">Flan by the slice or whole. Tres leches gelatinas.</span><span lang="es">Flan por rebanada o entero. Gelatinas de tres leches.</span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/empanadas.jpg" width="1080" height="1080" alt="Empanadas" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what">Empanadas</span>
-          </div>
+          <img class="photo__img" src="images/empanada-pina.webp" width="851" height="851" loading="lazy" decoding="async"
+               alt="A sugar-dusted pineapple empanada on a painted plate"
+               data-alt-es="Una empanada de piña espolvoreada con azúcar sobre un plato pintado">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name">Empanadas</h3>
         <p class="item__desc"><span class="ph"><span lang="en">fillings</span><span lang="es">rellenos</span></span></p>
       </li>
       <li class="item">
         <figure class="photo" style="--ratio: 1 / 1">
-          <!-- Replace with: <img src="photos/drinks.jpg" width="1080" height="1080" alt="Jarritos in the cooler" loading="lazy"> -->
-          <div class="photo__slot">
-            <span class="photo__tag"><span lang="en">Photo</span><span lang="es">Foto</span> 1:1</span>
-            <span class="photo__what"><span lang="en">The drinks cooler</span><span lang="es">El refrigerador de bebidas</span></span>
-          </div>
+          <img class="photo__img" src="images/jarritos.webp" width="1080" height="1080" loading="lazy" decoding="async"
+               alt="A glass bottle of Jarritos soda on a table"
+               data-alt-es="Una botella de vidrio de refresco Jarritos sobre una mesa">
+          <figcaption class="photo__sample"><span lang="en">Sample photo</span><span lang="es">Foto de muestra</span></figcaption>
         </figure>
         <h3 class="item__name"><span lang="en">Drinks</span><span lang="es">Bebidas</span></h3>
         <p class="item__desc"><span lang="en">Jarritos and other drinks.</span><span lang="es">Jarritos y otras bebidas.</span></p>
@@ -259,7 +248,7 @@
     <button type="button" class="lang__btn" data-set-lang="en" lang="en" aria-pressed="true">English</button>
     <button type="button" class="lang__btn" data-set-lang="es" lang="es" aria-pressed="false">Español</button>
   </div>
-  <p class="close__fine"><span lang="en">Preview site. Content pending owner approval.</span><span lang="es">Sitio de muestra. Contenido pendiente de aprobación.</span></p>
+  <p class="close__fine"><span lang="en">Preview site. Content pending owner approval. Sample photos from Wikimedia Commons:</span><span lang="es">Sitio de muestra. Contenido pendiente de aprobación. Fotos de muestra de Wikimedia Commons:</span> <a href="CREDITS.md"><span lang="en">photo credits</span><span lang="es">créditos</span></a></p>
 </footer>
 
 <div class="dock" data-dock>

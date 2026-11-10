@@ -6,8 +6,8 @@ An unlisted one-page spec site for El Chicanito Bakery (1164 E Dundee Rd, Palati
 - `styles.css`: the "Rótulo" hand-painted sign look
 - `main.js`: language toggle, live open/closed status (Chicago time), and the call bar
 - `robots.txt` + `<meta name="robots" content="noindex, nofollow">`: keep it out of search
+- `images/`: sample menu photos as compressed WebP (see `CREDITS.md`)
 - `fonts/`: self-hosted Anybody and Atkinson Hyperlegible Next (both SIL Open Font License)
-- `mockups/charola.css`: the direction C look, for comparison only
 
 ## Preview
 
@@ -18,7 +18,6 @@ python3 -m http.server 8000
 Then open `http://localhost:8000/`. Useful links:
 
 - `?lang=es` opens in Spanish
-- `?look=charola` shows the direction C mockup
 
 ## Placeholders to fill (owner to confirm)
 
@@ -35,25 +34,14 @@ Every unconfirmed item is marked on the page with a small mustard "TBD" (Spanish
 9. Empanada fillings
 10. Owner's story: who started El Chicanito, when, and why (owner writes or approves)
 
-**Photos** (search `class="photo"`; each slot has the replacement `<img>` with its size and alt text in a comment):
-
-| Photo | Aspect ratio | Suggested size |
-|---|---|---|
-| Tray of conchas and pan dulce (the large menu photo) | 3:2 | 1200×800 |
-| Decorated tres leches cake | 1:1 | 1080×1080 |
-| Tamales, a few opened | 1:1 | 1080×1080 |
-| Bolillos | 1:1 | 1080×1080 |
-| Flan and gelatinas | 1:1 | 1080×1080 |
-| Empanadas | 1:1 | 1080×1080 |
-| The drinks cooler | 1:1 | 1080×1080 |
-| Storefront from Dundee Rd, with the sign visible (bottom of page) | 3:2 | 1200×800 |
+**Photos:** the seven menu photos are sample photos from Wikimedia Commons, each tagged "Sample photo" on the page. Every one is listed with its source, author and license in [CREDITS.md](CREDITS.md), along with how to swap it. The storefront frame in "The bakery" is still empty and needs a real photo of the shop (3:2, 1200×800).
 
 **Still unknown, not shown on the page:** logo, owner's name, founding year, prices (none on purpose).
 
 **Before launch:**
 - Remove the robots `noindex` meta tag and replace robots.txt.
 - Add `url`, `geo` (latitude/longitude) and `image` to the JSON-LD.
-- Remove the "Preview site" line in the footer and the `?look=` loader in the `<head>`.
+- Remove the "Preview site" line in the footer.
 
 ## Spanish for a native speaker to check
 
